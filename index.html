@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Special Assembly – Vote of Thanks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="booting">
+
+  <!-- ===== Ambient background ===== -->
+  <div class="bg" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="layer bright-layer"></div>
+    <div class="layer spot-layer"></div>
+    <div class="vignette"></div>
+    <div class="grain"></div>
+  </div>
+  <canvas id="fx" aria-hidden="true"></canvas>
+
+  <!-- Hidden SVG symbols -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-mic" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></symbol>
+  </svg>
+
+  <main id="stage">
+
+    <!-- Shared header for skit scenes 4–7 -->
+    <header class="skit-header" aria-hidden="true">
+      <span class="eyebrow">Presenting</span>
+      <h2 class="h-title gold">Special Skit</h2>
+      <div class="dots"><i></i><i></i><i></i><i></i></div>
+    </header>
+
+    <!-- Scene 1 : Title -->
+    <section class="scene s-title" data-dur="4" data-fx="fade">
+      <div class="center">
+        <div class="ornament reveal" style="--d:.2s"><span></span></div>
+        <p class="eyebrow reveal" style="--d:.45s">Special Assembly</p>
+        <h1 class="mega gold shimmer reveal blur" style="--d:.7s">Vote of Thanks</h1>
+        <p class="sub reveal" style="--d:1.25s">Celebrating Our Team &amp; Contributions</p>
+        <div class="ornament reveal" style="--d:1.5s"><span></span></div>
+      </div>
+    </section>
+
+    <!-- Scene 2 : Gita Saar -->
+    <section class="scene s-gita" data-dur="4" data-fx="glow" data-exit="left">
+      <div class="halo"></div>
+      <div class="center">
+        <svg class="lotus reveal" style="--d:.15s" viewBox="0 0 64 40" aria-hidden="true">
+          <path d="M32 3c6.5 8 6.5 21 0 31c-6.5-10-6.5-23 0-31z"/>
+          <path d="M32 34C28 24 20 18 9 17c2 10 11 17 23 17z"/>
+          <path d="M32 34c4-10 12-16 23-17c-2 10-11 17-23 17z"/>
+          <path d="M32 37c-8-2.5-18-2.5-28 1.5M32 37c8-2.5 18-2.5 28 1.5"/>
+        </svg>
+        <p class="eyebrow reveal" style="--d:.35s">Spiritual &amp; Reflection</p>
+        <h2 class="h-title gold reveal blur" style="--d:.55s">Gita Saar</h2>
+        <div class="rule reveal" style="--d:.9s"></div>
+        <p class="names reveal" style="--d:1.05s">Trijal <em>&amp;</em> Laxmi</p>
+      </div>
+    </section>
+
+    <!-- Scene 3 : Thought for the Day -->
+    <section class="scene s-thought" data-dur="4" data-fx="slide">
+      <div class="center">
+        <div class="quote-mark reveal" style="--d:.25s">&ldquo;</div>
+        <p class="eyebrow reveal" style="--d:.4s">Inspiration</p>
+        <h2 class="h-title gold reveal slide-in" style="--d:.55s">Thought for the Day</h2>
+        <div class="rule reveal" style="--d:.9s"></div>
+        <p class="names reveal slide-in" style="--d:1.05s">Rohini</p>
+      </div>
+    </section>
+
+    <!-- Scenes 4–7 : Special Skit -->
+    <section class="scene s-skit" data-dur="4" data-fx="dissolve">
+      <div class="cards">
+        <article class="card reveal from-left" style="--d:.35s">
+          <span class="badge">as <b>Riya</b></span>
+          <h3 class="actor">Akansha</h3>
+          <div class="vo"><svg><use href="#i-mic"/></svg><span>Voiceover</span><b>Lakshika</b></div>
+        </article>
+        <article class="card reveal from-right" style="--d:.55s">
+          <span class="badge">as <b>Mummy</b></span>
+          <h3 class="actor">Priyangi</h3>
+          <div class="vo"><svg><use href="#i-mic"/></svg><span>Voiceover</span><b>Anshika</b></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="scene s-skit" data-dur="4" data-fx="dissolve">
+      <div class="cards">
+        <article class="card reveal" style="--d:.25s">
+          <span class="badge">as <b>Father</b></span>
+          <h3 class="actor">Amit</h3>
+          <div class="vo"><svg><use href="#i-mic"/></svg><span>Voiceover</span><b>Yatharth</b></div>
+        </article>
+        <article class="card reveal" style="--d:.42s">
+          <span class="badge">as <b>Uncle</b></span>
+          <h3 class="actor">Ansh</h3>
+          <div class="vo"><svg><use href="#i-mic"/></svg><span>Voiceover</span><b>Siddhant</b></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="scene s-skit" data-dur="4" data-fx="dissolve">
+      <div class="cards">
+        <article class="card reveal" style="--d:.25s">
+          <span class="badge">as <b>Bua</b></span>
+          <h3 class="actor">Aradhya</h3>
+          <div class="vo"><svg><use href="#i-mic"/></svg><span>Voiceover</span><b>Anshika</b></div>
+        </article>
+        <article class="card reveal" style="--d:.42s">
+          <span class="badge">as <b>Bhai</b></span>
+          <h3 class="actor">Keshav</h3>
+          <div class="vo"><svg><use href="#i-mic"/></svg><span>Voiceover</span><b>Siddhant</b></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="scene s-skit" data-dur="4" data-fx="dissolve">
+      <div class="cards">
+        <article class="card reveal" style="--d:.25s">
+          <span class="badge">as <b>Bua ki Beti</b></span>
+          <h3 class="actor">Arushi</h3>
+          <div class="vo"><svg><use href="#i-mic"/></svg><span>Voiceover</span><b>Lakshika</b></div>
+        </article>
+        <article class="card reveal" style="--d:.42s">
+          <span class="badge">as <b>Dadaji</b></span>
+          <h3 class="actor">Tanmay</h3>
+          <div class="vo"><svg><use href="#i-mic"/></svg><span>Voiceover</span><b>Yatharth</b></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Scene 8 : Announcements -->
+    <section class="scene s-announce" data-dur="4" data-fx="bright">
+      <div class="center">
+        <svg class="icon-mega reveal" style="--d:.2s" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M8 20v8a2 2 0 0 0 2 2h4l14 8V10L14 18h-4a2 2 0 0 0-2 2z"/>
+          <path d="M14 30l3 9h4l-2-8"/>
+          <path d="M34 18c2 1.5 3 3.6 3 6s-1 4.5-3 6M38.5 13c3.6 2.8 5.5 6.6 5.5 11s-1.9 8.2-5.5 11"/>
+        </svg>
+        <h2 class="h-title gold reveal blur" style="--d:.4s">Announcements</h2>
+        <div class="pills">
+          <span class="pill reveal pop" style="--d:.85s">Shawni</span>
+          <span class="amp reveal" style="--d:1.05s">&amp;</span>
+          <span class="pill reveal pop" style="--d:1.2s">Purnima</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 9 : Vote of Thanks -->
+    <section class="scene s-vot" data-dur="4" data-fx="spot">
+      <div class="center">
+        <h2 class="h-title gold reveal blur" style="--d:.35s">Vote of Thanks</h2>
+        <div class="ornament reveal" style="--d:.75s"><span></span></div>
+        <p class="eyebrow reveal" style="--d:.95s">Presented by</p>
+        <p class="names big reveal blur" style="--d:1.15s">Lakshika</p>
+      </div>
+    </section>
+
+    <!-- Scene 10 : Special Volunteers -->
+    <section class="scene s-vol" data-dur="4" data-fx="fade">
+      <div class="center">
+        <p class="eyebrow reveal" style="--d:.2s">Organizing Support</p>
+        <h2 class="h-title gold reveal blur" style="--d:.4s">Special Volunteers</h2>
+        <div class="group">
+          <div class="member reveal pop" style="--d:.85s"><div class="avatar"><span>H</span></div><p>Harsh</p></div>
+          <div class="member reveal pop" style="--d:1.05s"><div class="avatar"><span>A</span></div><p>Aditya</p></div>
+          <div class="member reveal pop" style="--d:1.25s"><div class="avatar"><span>M</span></div><p>Manav</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 11 : Closing -->
+    <section class="scene s-close" data-dur="5" data-fx="zoom">
+      <div class="center zoom-wrap">
+        <div class="ornament reveal" style="--d:.2s"><span></span></div>
+        <h1 class="mega gold shimmer reveal blur" style="--d:.35s">Thank You All!</h1>
+        <p class="sub reveal" style="--d:1s">Have a Great Day Ahead</p>
+        <div class="ornament reveal" style="--d:1.2s"><span></span></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Controls (auto-hide) ===== -->
+  <div class="controls" id="controls">
+    <div class="progress"><div class="bar" id="bar"></div><div class="ticks" id="ticks"></div></div>
+    <div class="row">
+      <button id="btnPlay" title="Play / Pause (Space)">❚❚</button>
+      <button id="btnRestart" title="Restart (R)">↺</button>
+      <span class="time" id="time">0:00 / 0:45</span>
+      <span class="spacer"></span>
+      <span class="hint">Space play · ←/→ scene · R restart · L loop · F fullscreen</span>
+      <button id="btnLoop" title="Loop (L)">⟳ Loop: Off</button>
+      <button id="btnFs" title="Fullscreen (F)">⛶</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
