@@ -69,8 +69,14 @@ body.booting #stage { opacity: 0; }
     radial-gradient(38% 70% at 50% 0%, rgba(255, 236, 190, .30) 0%, rgba(255, 236, 190, .06) 55%, transparent 75%),
     radial-gradient(30% 12% at 50% 72%, rgba(255, 220, 160, .18) 0%, transparent 70%);
 }
+.warm-layer {
+  background:
+    radial-gradient(65% 55% at 50% 40%, rgba(243, 209, 138, .30) 0%, transparent 70%),
+    radial-gradient(45% 40% at 50% 70%, rgba(232, 163, 184, .18) 0%, transparent 65%);
+}
 body.bright .bright-layer { opacity: 1; }
 body.spot   .spot-layer   { opacity: 1; }
+body.warm   .warm-layer   { opacity: 1; }
 
 .vignette { position: absolute; inset: 0;
   background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, .65) 100%); }
@@ -98,7 +104,11 @@ body.spot   .spot-layer   { opacity: 1; }
 .scene[data-fx="glow"]  { filter: brightness(1.8); }
 .scene[data-fx="slide"] { transform: translate3d(8vw, 0, 0); }
 .scene[data-fx="zoom"]  { transform: scale(1.06); }
+.scene[data-fx="slide-up"] { transform: translate3d(0, calc(var(--u) * 6), 0); filter: blur(8px); }
+.scene[data-fx="warm-glow"] { transform: scale(1.05) translateY(calc(var(--u) * 2)); filter: brightness(1.5) blur(6px); }
+.scene[data-fx="perspective-rise"] { transform: perspective(1000px) rotateX(12deg) translateY(calc(var(--u) * 5)) scale(.94); filter: blur(8px); }
 .scene[data-exit="left"].leaving { transform: translate3d(-8vw, 0, 0); }
+.scene[data-exit="up"].leaving { transform: translate3d(0, calc(var(--u) * -5), 0); opacity: 0; filter: blur(6px); }
 .scene[data-fx="dissolve"].leaving { transform: none; }
 /* active state must beat the entrance-type offsets above */
 .scene.active[data-fx] { transform: none; filter: none; }
@@ -337,7 +347,108 @@ body.in-skit .skit-header { opacity: 1; transform: none; transition-delay: .15s;
 .avatar span { font-family: var(--serif); font-weight: 600; font-size: calc(var(--u) * 5); color: var(--gold-1); }
 .member p { font-family: var(--serif); font-weight: 600; font-size: calc(var(--u) * 3.4); color: var(--ink); }
 
-/* ---------------- Scene 11 · Closing ---------------- */
+/* ---------------- Scene 11 · Mentors Gratitude ---------------- */
+.mentor-sub { max-width: min(84vw, calc(var(--u) * 64)); font-size: calc(var(--u) * 2.3); }
+.mentor-row {
+  display: flex; gap: calc(var(--u) * 3); justify-content: center;
+  width: min(92vw, calc(var(--u) * 90));
+  margin-top: calc(var(--u) * 1.2);
+}
+.mentor-card {
+  position: relative; overflow: hidden;
+  flex: 1; max-width: calc(var(--u) * 28);
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: calc(var(--u) * 1.2);
+  padding: calc(var(--u) * 2.8) calc(var(--u) * 2) calc(var(--u) * 2.6);
+  border-radius: calc(var(--u) * 2);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, .08) 0%, rgba(255, 255, 255, .02) 60%, rgba(243, 209, 138, .05) 100%);
+  border: 1px solid rgba(243, 209, 138, .26);
+  box-shadow:
+    0 calc(var(--u) * 2) calc(var(--u) * 5) rgba(0, 0, 0, .42),
+    inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+.mentor-card::after {
+  content: ""; position: absolute; top: -50%; bottom: -50%; width: 40%; left: -60%;
+  background: linear-gradient(100deg, transparent, rgba(255, 240, 210, .12), transparent);
+  transform: skewX(-18deg);
+}
+.scene.active .mentor-card::after { animation: sweep 2.2s var(--ease-io) 1s both; }
+.mentor-avatar {
+  width: calc(var(--u) * 7.6); height: calc(var(--u) * 7.6); border-radius: 50%;
+  display: grid; place-items: center;
+  background: radial-gradient(circle at 35% 30%, #3a2550, #130d24 75%);
+  border: 2px solid var(--gold-2);
+  box-shadow: 0 0 calc(var(--u) * 2) rgba(243, 209, 138, .28);
+}
+.mentor-avatar span {
+  font-family: var(--serif); font-weight: 700; font-size: calc(var(--u) * 3.8);
+  color: var(--gold-1);
+}
+.mentor-name {
+  font-family: var(--serif); font-weight: 600; font-size: calc(var(--u) * 3.8);
+  color: var(--ink); line-height: 1.1;
+}
+.mentor-badge {
+  font-size: calc(var(--u) * 1.05); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold-2); background: rgba(243, 209, 138, .1);
+  padding: .35em 1em; border-radius: 99px; border: 1px solid rgba(243, 209, 138, .35);
+}
+
+/* ---------------- Scene 12 & 13 · Leadership Cards & Management ---------------- */
+.leadership-cards {
+  display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 3.5);
+  width: min(88vw, calc(var(--u) * 78));
+  perspective: 1200px;
+  margin-top: calc(var(--u) * 1.2);
+}
+.leader-card {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: calc(var(--u) * 1.2);
+  padding: calc(var(--u) * 3.2) calc(var(--u) * 2.8) calc(var(--u) * 2.8);
+  border-radius: calc(var(--u) * 2);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, .09) 0%, rgba(255, 255, 255, .025) 55%, rgba(243, 209, 138, .06) 100%);
+  border: 1px solid rgba(243, 209, 138, .26);
+  box-shadow:
+    0 calc(var(--u) * 3) calc(var(--u) * 6) rgba(0, 0, 0, .45),
+    inset 0 1px 0 rgba(255, 255, 255, .15);
+}
+.leader-card::after {
+  content: ""; position: absolute; top: -50%; bottom: -50%; width: 40%; left: -60%;
+  background: linear-gradient(100deg, transparent, rgba(255, 240, 210, .14), transparent);
+  transform: skewX(-18deg);
+}
+.scene.active .leader-card::after { animation: sweep 2.4s var(--ease-io) 1s both; }
+.leader-card::before {
+  content: ""; position: absolute; top: 0; left: 15%; right: 15%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-2), transparent);
+}
+.leader-name {
+  font-family: var(--serif); font-weight: 600;
+  font-size: calc(var(--u) * 4.6); line-height: 1.08; color: var(--ink);
+  text-shadow: 0 0 calc(var(--u) * 2.5) rgba(243, 209, 138, .25);
+}
+.leader-role {
+  font-family: var(--sans); font-size: calc(var(--u) * 1.15);
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.mgmt-quote {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: calc(var(--u) * 2.3); color: var(--gold-1);
+  max-width: min(86vw, calc(var(--u) * 70));
+  line-height: 1.35; opacity: .95;
+}
+
+@media (max-width: 760px) {
+  .mentor-row { flex-direction: column; align-items: center; gap: calc(var(--u) * 2); }
+  .mentor-card { width: 100%; max-width: calc(var(--u) * 40); }
+  .leadership-cards { grid-template-columns: 1fr; gap: calc(var(--u) * 2); }
+}
+
+/* ---------------- Scene 14 · Closing ---------------- */
 .s-close .mega { font-style: italic; font-size: calc(var(--u) * 10.5); }
 .scene.active .zoom-wrap { animation: zoomOut 6s cubic-bezier(.22, .61, .36, 1) both; }
 @keyframes zoomOut { from { transform: scale(1.22); } to { transform: scale(1); } }

@@ -57,6 +57,7 @@
     body.classList.toggle("in-skit", SKIT.includes(i));
     body.classList.toggle("bright", s.dataset.fx === "bright");
     body.classList.toggle("spot", s.dataset.fx === "spot");
+    body.classList.toggle("warm", s.dataset.fx === "warm-glow");
     dots.forEach((d, k) => d.classList.toggle("on", SKIT[k] === i));
 
     fx.celebrate(i === CLOSE);
